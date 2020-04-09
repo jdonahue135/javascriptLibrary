@@ -1,0 +1,1 @@
+Make a single page Library app as part of [The Odin Project's curriculum](https://www.theodinproject.com/courses/javascript/lessons/library?ref=lnav).
