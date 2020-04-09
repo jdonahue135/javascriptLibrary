@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Library</h1>
+
+  <div class="content">
+      <ul></ul>
+  </div>
+  <button class="add">New Book</button><br><br>
+  <form hidden class="form-container">
+    <label for="title">Title</label>  
+    <input class="field" type="text" id="title">
+        <p class="error" hidden id="title_error">Must provide title.</p>
+    <br><br>
+    <label for="author">Author</label>  
+    <input class="field" type="text" id="author">
+        <p class="error" hidden id="author_error">Must provide author.</p>
+    <br><br>
+    <label for="pages">Pages</label>  
+    <input class="field" type="number" id="pages">
+        <p class="error" hidden id="pages_error">Must provide pages.</p>
+    <br>
+    <p>Is it read?</p>
+    <input class="radio" type="radio" id="read" value="true" name="read" checked="checked">
+    <label for="true">Yes</label><br>
+    <input class="radio" type="radio" id="read" value="false" name="read">
+    <label for="false">No</label><br><br>
+    <button type="button" class="submit">Save</button>
+    <button type="button" class="cancel">Cancel</button>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
