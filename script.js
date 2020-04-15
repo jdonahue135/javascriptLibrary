@@ -7,12 +7,13 @@ const errors = document.querySelectorAll('p.error')
 const cancel = document.querySelector('button.cancel');
 const ul = document.querySelector('ul');
 
-//define book model
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+    }
 }
 
 //default books
@@ -112,7 +113,6 @@ function readButton(li, book, index) {
         button.setAttribute('id', 'read-' + book);
         button.textContent = 'Read/Unread'
         button.addEventListener('click', (e) => {
-            let value = book["read"]
             if (book["read"] == true) {
                 book["read"] = false;
             }
