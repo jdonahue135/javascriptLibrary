@@ -13,12 +13,16 @@ class Book {
         this.author = author
         this.pages = pages
         this.read = read
+        this.toggleRead = this.toggleRead.bind(this);
     }
 }
 
-//default books
-let library = [{'title': 'GOT', 'author': 'George RR Martin', 'pages': '1000', 'read': true}, 
-{'title': 'ACoK', 'author': 'George RR Martin', 'pages': '1000', 'read': false}];
+Book.prototype.toggleRead = function() { 
+    if (this.read == true) { this.read = false; }
+    else { this.read = true; }
+}
+
+let library = [];
 
 //populate book list
 appendBooks(library);
@@ -77,7 +81,7 @@ function appendBooks(library) {
         li.setAttribute('id', library[x]['title']);
         li.textContent = bookFormat(library[x]);
         deleteButton(li, library[x], x)
-        readButton(li, library[x], x)
+        readButton(li, library[x])
         ul.appendChild(li);
     }
 }
@@ -97,7 +101,7 @@ function bookFormat(book) {
 //add delete button for book
 function deleteButton(li, book, index) {
     let button = document.createElement('button');
-        button.setAttribute('id', 'delete-' + book);
+        button.setAttribute('id', 'delete-' + book.title);
         button.textContent = 'Delete'
         button.addEventListener('click', (e) => {
             //delete book
@@ -108,18 +112,13 @@ function deleteButton(li, book, index) {
 }
 
 //add read button for book
-function readButton(li, book, index) {
+function readButton(li, book) {
     let button = document.createElement('button');
-        button.setAttribute('id', 'read-' + book);
-        button.textContent = 'Read/Unread'
-        button.addEventListener('click', (e) => {
-            if (book["read"] == true) {
-                book["read"] = false;
-            }
-            else {
-                book["read"] = true;
-            }
-            appendBooks(library);
-        })
-        li.appendChild(button);
+    button.setAttribute('id', 'read-' + book.title);
+    button.textContent = 'Read/Unread'
+    button.addEventListener('click', (e) => {
+        book.toggleRead();
+        appendBooks(library);
+    })
+    li.appendChild(button);
 }
